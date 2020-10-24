@@ -23,6 +23,7 @@ pub static COLOUR_SCALE: Arg = Arg { short: None, long: "colour-scale", takes_va
 
 // filtering and sorting options
 pub static ALL:         Arg = Arg { short: Some(b'a'), long: "all",         takes_value: TakesValue::Forbidden };
+pub static ALL_ALIAS:   Arg = Arg { short: Some(b'A'), long: "ALL",         takes_value: TakesValue::Forbidden };
 pub static LIST_DIRS:   Arg = Arg { short: Some(b'd'), long: "list-dirs",   takes_value: TakesValue::Forbidden };
 pub static LEVEL:       Arg = Arg { short: Some(b'L'), long: "level",       takes_value: TakesValue::Necessary(None) };
 pub static REVERSE:     Arg = Arg { short: Some(b'r'), long: "reverse",     takes_value: TakesValue::Forbidden };
@@ -44,9 +45,10 @@ pub static ICONS:      Arg = Arg { short: None,       long: "icons",      takes_
 pub static INODE:      Arg = Arg { short: Some(b'i'), long: "inode",      takes_value: TakesValue::Forbidden };
 pub static LINKS:      Arg = Arg { short: Some(b'H'), long: "links",      takes_value: TakesValue::Forbidden };
 pub static MODIFIED:   Arg = Arg { short: Some(b'm'), long: "modified",   takes_value: TakesValue::Forbidden };
+pub static MOD_ALIAS:  Arg = Arg { short: Some(b't'), long: "time-mod",   takes_value: TakesValue::Forbidden };
 pub static CHANGED:    Arg = Arg { short: None,       long: "changed",    takes_value: TakesValue::Forbidden };
 pub static BLOCKS:     Arg = Arg { short: Some(b'S'), long: "blocks",     takes_value: TakesValue::Forbidden };
-pub static TIME:       Arg = Arg { short: Some(b't'), long: "time",       takes_value: TakesValue::Necessary(Some(TIMES)) };
+pub static TIME:       Arg = Arg { short: None,       long: "time",       takes_value: TakesValue::Necessary(Some(TIMES)) };
 pub static ACCESSED:   Arg = Arg { short: Some(b'u'), long: "accessed",   takes_value: TakesValue::Forbidden };
 pub static CREATED:    Arg = Arg { short: Some(b'U'), long: "created",    takes_value: TakesValue::Forbidden };
 pub static TIME_STYLE: Arg = Arg { short: None,       long: "time-style", takes_value: TakesValue::Necessary(Some(TIME_STYLES)) };
@@ -71,10 +73,10 @@ pub static ALL_ARGS: Args = Args(&[
     &ONE_LINE, &LONG, &GRID, &ACROSS, &RECURSE, &TREE, &CLASSIFY,
     &COLOR, &COLOUR, &COLOR_SCALE, &COLOUR_SCALE,
 
-    &ALL, &LIST_DIRS, &LEVEL, &REVERSE, &SORT, &DIRS_FIRST,
+    &ALL, &ALL_ALIAS, &LIST_DIRS, &LEVEL, &REVERSE, &SORT, &DIRS_FIRST,
     &IGNORE_GLOB, &GIT_IGNORE, &ONLY_DIRS,
 
-    &BINARY, &BYTES, &GROUP, &HEADER, &ICONS, &INODE, &LINKS, &MODIFIED, &CHANGED,
+    &BINARY, &BYTES, &GROUP, &HEADER, &ICONS, &INODE, &LINKS, &MODIFIED, &MOD_ALIAS, &CHANGED,
     &BLOCKS, &TIME, &ACCESSED, &CREATED, &TIME_STYLE,
     &NO_PERMISSIONS, &NO_FILESIZE, &NO_USER, &NO_TIME,
 

@@ -307,7 +307,7 @@ impl TimeTypes {
     /// see the default set.
     fn deduce(matches: &MatchedFlags<'_>) -> Result<Self, OptionsError> {
         let possible_word = matches.get(&flags::TIME)?;
-        let modified = matches.has(&flags::MODIFIED)?;
+        let modified = matches.has(&flags::MODIFIED)? || matches.has(&flags::MOD_ALIAS)?;
         let changed  = matches.has(&flags::CHANGED)?;
         let accessed = matches.has(&flags::ACCESSED)?;
         let created  = matches.has(&flags::CREATED)?;
@@ -318,7 +318,7 @@ impl TimeTypes {
             Self { modified: false, changed: false, accessed: false, created: false }
         } else if let Some(word) = possible_word {
             if modified {
-                return Err(OptionsError::Useless(&flags::MODIFIED, true, &flags::TIME));
+                return Err(OptionsError::Useless(&flags::MODIFIED, true, &flags::TIME));  // what to do with MOD_ALIAS?
             }
             else if changed {
                 return Err(OptionsError::Useless(&flags::CHANGED, true, &flags::TIME));
@@ -382,7 +382,7 @@ mod test {
     use crate::options::test::Strictnesses::*;
 
     static TEST_ARGS: &[&Arg] = &[ &flags::BINARY, &flags::BYTES,    &flags::TIME_STYLE,
-                                   &flags::TIME,   &flags::MODIFIED, &flags::CHANGED,
+                                   &flags::TIME,   &flags::MODIFIED, &flags::MOD_ALIAS, &flags::CHANGED,
                                    &flags::CREATED, &flags::ACCESSED, &flags::ICONS,
                                    &flags::HEADER, &flags::GROUP,  &flags::INODE, &flags::GIT,
                                    &flags::LINKS,  &flags::BLOCKS, &flags::LONG,  &flags::LEVEL,

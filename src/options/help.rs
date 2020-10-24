@@ -25,7 +25,7 @@ DISPLAY OPTIONS
   --icons            display icons
 
 FILTERING AND SORTING OPTIONS
-  -a, --all                  show hidden and 'dot' files
+  -a, -A, --all              show hidden and 'dot' files
   -d, --list-dirs            list directories like regular files
   -L, --level DEPTH          limit the depth of recursion
   -r, --reverse              reverse the sort order
@@ -45,9 +45,9 @@ LONG VIEW OPTIONS
   -h, --header         add a header row to each column
   -H, --links          list each file's number of hard links
   -i, --inode          list each file's inode number
-  -m, --modified       use the modified timestamp field
+  -m, -t, --modified   use the modified timestamp field
   -S, --blocks         show number of file system blocks
-  -t, --time FIELD     which timestamp field to list (modified, accessed, created)
+  --time FIELD         which timestamp field to list (modified, accessed, created)
   -u, --accessed       use the accessed timestamp field
   -U, --created        use the created timestamp field
   --changed            use the changed timestamp field
