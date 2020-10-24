@@ -25,7 +25,8 @@ DISPLAY OPTIONS
   --icons            display icons
 
 FILTERING AND SORTING OPTIONS
-  -a, -A, --all              show hidden and 'dot' files
+  -a, --all                  show hidden and 'dot' files
+  -A, --almost-all           show hidden and 'dot' files
   -d, --list-dirs            list directories like regular files
   -L, --level DEPTH          limit the depth of recursion
   -r, --reverse              reverse the sort order

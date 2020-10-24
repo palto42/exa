@@ -154,13 +154,13 @@ impl DotFilter {
     /// special case where `--tree --all --all` won’t work: listing the
     /// parent directory in tree mode would loop onto itself!
     pub fn deduce(matches: &MatchedFlags<'_>) -> Result<Self, OptionsError> {
-        let count = matches.count(&flags::ALL) + matches.count(&flags::ALL_ALIAS);
+        let count = matches.count(&flags::ALL);
 
-        if count == 0 {
-            Ok(Self::JustFiles)
-        }
-        else if count == 1 {
+        if count == 1 || matches.has(&flags::ALMOST_ALL)? {
             Ok(Self::Dotfiles)
+        }
+        else if count == 0 {
+            Ok(Self::JustFiles)
         }
         else if matches.count(&flags::TREE) > 0 {
             Err(OptionsError::TreeAllAll)
@@ -230,7 +230,7 @@ mod test {
                 use crate::options::test::parse_for_test;
                 use crate::options::test::Strictnesses::*;
 
-                static TEST_ARGS: &[&Arg] = &[ &flags::SORT, &flags::ALL, &flags::ALL_ALIAS, &flags::TREE, &flags::IGNORE_GLOB, &flags::GIT_IGNORE ];
+                static TEST_ARGS: &[&Arg] = &[ &flags::SORT, &flags::ALL, &flags::ALMOST_ALL, &flags::TREE, &flags::IGNORE_GLOB, &flags::GIT_IGNORE ];
                 for result in parse_for_test($inputs.as_ref(), TEST_ARGS, $stricts, |mf| $type::deduce(mf)) {
                     assert_eq!(result, $result);
                 }
