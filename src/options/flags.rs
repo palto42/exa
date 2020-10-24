@@ -45,7 +45,7 @@ pub static ICONS:      Arg = Arg { short: None,       long: "icons",      takes_
 pub static INODE:      Arg = Arg { short: Some(b'i'), long: "inode",      takes_value: TakesValue::Forbidden };
 pub static LINKS:      Arg = Arg { short: Some(b'H'), long: "links",      takes_value: TakesValue::Forbidden };
 pub static MODIFIED:   Arg = Arg { short: Some(b'm'), long: "modified",   takes_value: TakesValue::Forbidden };
-pub static MOD_ALIAS:  Arg = Arg { short: Some(b't'), long: "time-mod",   takes_value: TakesValue::Forbidden };
+pub static TIME_MOD:   Arg = Arg { short: Some(b't'), long: "time-mod",   takes_value: TakesValue::Forbidden };
 pub static CHANGED:    Arg = Arg { short: None,       long: "changed",    takes_value: TakesValue::Forbidden };
 pub static BLOCKS:     Arg = Arg { short: Some(b'S'), long: "blocks",     takes_value: TakesValue::Forbidden };
 pub static TIME:       Arg = Arg { short: None,       long: "time",       takes_value: TakesValue::Necessary(Some(TIMES)) };
@@ -76,7 +76,7 @@ pub static ALL_ARGS: Args = Args(&[
     &ALL, &ALMOST_ALL, &LIST_DIRS, &LEVEL, &REVERSE, &SORT, &DIRS_FIRST,
     &IGNORE_GLOB, &GIT_IGNORE, &ONLY_DIRS,
 
-    &BINARY, &BYTES, &GROUP, &HEADER, &ICONS, &INODE, &LINKS, &MODIFIED, &MOD_ALIAS, &CHANGED,
+    &BINARY, &BYTES, &GROUP, &HEADER, &ICONS, &INODE, &LINKS, &MODIFIED, &TIME_MOD, &CHANGED,
     &BLOCKS, &TIME, &ACCESSED, &CREATED, &TIME_STYLE,
     &NO_PERMISSIONS, &NO_FILESIZE, &NO_USER, &NO_TIME,
 

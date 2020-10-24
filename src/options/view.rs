@@ -307,7 +307,7 @@ impl TimeTypes {
     /// see the default set.
     fn deduce(matches: &MatchedFlags<'_>) -> Result<Self, OptionsError> {
         let possible_word = matches.get(&flags::TIME)?;
-        let modified = matches.has(&flags::MODIFIED)? || matches.has(&flags::MOD_ALIAS)?;
+        let modified = matches.has(&flags::MODIFIED)? || matches.has(&flags::TIME_MOD)?;
         let changed  = matches.has(&flags::CHANGED)?;
         let accessed = matches.has(&flags::ACCESSED)?;
         let created  = matches.has(&flags::CREATED)?;
@@ -382,7 +382,7 @@ mod test {
     use crate::options::test::Strictnesses::*;
 
     static TEST_ARGS: &[&Arg] = &[ &flags::BINARY, &flags::BYTES,    &flags::TIME_STYLE,
-                                   &flags::TIME,   &flags::MODIFIED, &flags::MOD_ALIAS, &flags::CHANGED,
+                                   &flags::TIME,   &flags::MODIFIED, &flags::TIME_MOD, &flags::CHANGED,
                                    &flags::CREATED, &flags::ACCESSED, &flags::ICONS,
                                    &flags::HEADER, &flags::GROUP,  &flags::INODE, &flags::GIT,
                                    &flags::LINKS,  &flags::BLOCKS, &flags::LONG,  &flags::LEVEL,
